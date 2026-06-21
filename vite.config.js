@@ -3,10 +3,13 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
-  base: '/claudia-slowwrite/', // ⚠️ 這行非常重要！前後都要有斜線，名稱要跟等一下建立的 GitHub 倉庫名稱一致
+export default defineConfig(({ command }) => {
+  return {
+    plugins: [
+      react(),
+      tailwindcss(),
+    ],
+    // 💡 只有在執行 build/deploy（打包）時才使用 github 子路徑，本地測試時用根目錄 '/'
+    base: command === 'build' ? '/claudia-slowwrite/' : '/',
+  }
 })
