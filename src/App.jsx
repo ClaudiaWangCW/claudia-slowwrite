@@ -333,7 +333,7 @@ export default function App() {
                 
                 {/* 1. 底層真實照片 */}
                 <img 
-                  src="/myProfile.png" 
+                  src="./myProfile.png" 
                   alt="Claudia" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
